@@ -12,9 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function checkScroll() {
-    if (isInViewport(viewport)) {
+    const isScrolling = isInViewport(viewport);
+    if (isScrolling && !viewport.classList.contains('scrolling')) {
       viewport.classList.add('scrolling');
-    } else {
+    } else if (!isScrolling && viewport.classList.contains('scrolling')) {
       viewport.classList.remove('scrolling');
     }
   }
@@ -33,4 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial check in case the element is already in viewport
   checkScroll();
+
+  // script.js
+
+  // Наприклад, змінюємо тривалість анімації в залежності від кількості обкладинок
+
+  const coversList = document.querySelector('.cover-list');
+  const coversCount = coversList.children.length;
+
+  // Задаємо тривалість анімації на основі кількості обкладинок
+  // Приклад: 15 секунд для 3 обкладинок, ви можете налаштувати за потребою
+  const animationDuration = 15 + (coversCount - 3) * 5;
+  coversList.style.animationDuration = `${animationDuration}s`;
 });
