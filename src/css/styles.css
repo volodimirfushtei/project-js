@@ -22,7 +22,7 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
-  object-fit: contain;
+  object-fit: cover;
 }
 .cover-hidden {
   position: absolute;
@@ -45,13 +45,11 @@ img {
 }
 
 .cover-picture {
-  display: block;
   width: 100%;
   height: auto;
 }
 
 .cover-img {
-  display: block;
   width: 100%;
 
   height: auto;
@@ -79,6 +77,7 @@ img {
 }
 .container {
   max-width: 375px;
+  height: 508px;
   padding: 0;
   margin: 0 auto;
 }
@@ -88,19 +87,6 @@ img {
   padding: 0;
   position: relative;
 }
-.covers-wrapp {
-  padding: 0;
-
-  display: flex;
-
-  flex-direction: column;
-
-  position: absolute;
-  right: -800px;
-  left: 0;
-
-  overflow: hidden;
-}
 
 .cover-list {
   display: flex;
@@ -108,6 +94,7 @@ img {
   transform: rotate(17deg);
   margin-bottom: 30px;
   padding: 0;
+  justify-content: flex-end;
   list-style: none;
 }
 
@@ -118,7 +105,7 @@ img {
   margin-bottom: 10px;
   height: 162px;
   display: flex;
-  align-items: center;
+
   justify-content: center;
 
   animation-name: marqueeLine;
@@ -129,17 +116,18 @@ img {
 
 @keyframes marqueeLine {
   from {
-    transform: translateX(-20%);
+    transform: translateX(100%);
   }
 
   to {
-    transform: translateX(-180%);
+    transform: translateX(-100%);
   }
 }
 
 .cover-section.scrolling .cover-list {
   animation: cover-section-scroll 20s linear infinite;
 }
+
 /* Tablet  */
 
 @media screen and (min-width: 768px) {
@@ -165,5 +153,13 @@ img {
     max-width: 1429px;
     height: 960px;
     background-size: cover;
+  }
+
+  .cover-list li {
+    max-height: 314px;
+  }
+  .cover-img {
+    max-width: 544px;
+    height: auto;
   }
 }
