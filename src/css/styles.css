@@ -132,27 +132,18 @@ img {
   justify-content: center;
   white-space: nowrap;
   animation-name: marqueeLine;
-  animation-duration: 5s;
+  animation-duration: 10s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
 
-/* @keyframes marqueeLine {
+@keyframes marqueeLine {
   from {
     transform: translateX(-20%);
   }
 
   to {
-    transform: translateX(-180%);
-  }
-} */
-
-@keyframes scroll {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-100%);
+    transform: translateX(-800%);
   }
 }
 
