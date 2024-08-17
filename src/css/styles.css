@@ -9,6 +9,7 @@
 
 body {
   font-family: Arial, sans-serif;
+  background: #1c1d20;
 }
 
 *,
@@ -21,7 +22,7 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
 }
 .cover-hidden {
   position: absolute;
@@ -36,42 +37,32 @@ img {
 
 /* --------------------------------------------------- */
 
-.cover-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
 .cover-list li {
   position: relative;
-  width: 100%; /* Може бути змінено в залежності від потреб */
+  width: 100%;
+
   overflow: hidden;
 }
 
 .cover-picture {
   display: block;
   width: 100%;
-  height: auto; /* Висота визначатиметься через JavaScript */
+  height: auto;
 }
 
 .cover-img {
   display: block;
-  width: 100%; /* Зображення заповнює контейнер */
-  height: auto; /* Висота зображення зберігається пропорційно */
+  width: 100%;
+
+  height: auto;
 }
 
-/* Потрібно для створення правильного співвідношення сторін */
-.cover-list li::before {
-  content: '';
-  display: block;
-  /* Задати співвідношення сторін (для 16:9) */
-}
 /* ------------------------------------------------------------ */
 .cover-section {
   backdrop-filter: blur(30px);
   background: #1c1d20;
   background-position: center;
-  position: relative;
+  padding: 0;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0 auto;
@@ -95,15 +86,15 @@ img {
   width: 100%;
   height: auto;
   padding: 0;
+  position: relative;
 }
 .covers-wrapp {
   padding: 0;
-  max-width: 282px;
+
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+
   flex-direction: column;
-  margin-bottom: 30px;
+
   position: absolute;
   right: -800px;
   left: 0;
@@ -115,22 +106,21 @@ img {
   display: flex;
   width: 100%;
   transform: rotate(17deg);
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   padding: 0;
-  position: relative;
-  animation: scroll 15s linear infinite;
+  list-style: none;
 }
 
 .cover-list li {
   flex-shrink: 0;
   margin-right: 30px;
   padding: 0;
-
+  margin-bottom: 10px;
   height: 162px;
   display: flex;
   align-items: center;
   justify-content: center;
-  white-space: nowrap;
+
   animation-name: marqueeLine;
   animation-duration: 10s;
   animation-timing-function: ease-in-out;
@@ -143,7 +133,7 @@ img {
   }
 
   to {
-    transform: translateX(-800%);
+    transform: translateX(-180%);
   }
 }
 
@@ -157,17 +147,23 @@ img {
     max-width: 768px;
     height: 960px;
   }
+  .cover-section {
+    max-width: 768px;
+  }
+
   .cover-list li {
     max-width: 544px;
     height: 314px;
-  }
-  .cover-img {
-    max-width: 544px;
-    height: 314px;
+    padding: 0;
   }
 }
 @media screen and (min-width: 1158px) {
   .container {
-    max-width: 1158px;
+    max-width: 1429px;
+  }
+  .cover-section {
+    max-width: 1429px;
+    height: 960px;
+    background-size: cover;
   }
 }

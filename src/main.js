@@ -12,15 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function checkScroll() {
-    const isScrolling = isInViewport(viewport);
-    if (isScrolling && !viewport.classList.contains('scrolling')) {
+    if (isInViewport(viewport)) {
       viewport.classList.add('scrolling');
-    } else if (!isScrolling && viewport.classList.contains('scrolling')) {
+    } else {
       viewport.classList.remove('scrolling');
     }
   }
 
-  // Debounce function to limit the rate at which checkScroll is called
   function debounce(func, wait) {
     let timeout;
     return function (...args) {
@@ -29,21 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // Attach debounced checkScroll to the scroll event
-  window.addEventListener('scroll', debounce(checkScroll, 100));
+  const debouncedCheckScroll = debounce(checkScroll, 100);
+  window.addEventListener('scroll', debouncedCheckScroll);
 
-  // Initial check in case the element is already in viewport
   checkScroll();
-
-  // script.js
-
-  // Наприклад, змінюємо тривалість анімації в залежності від кількості обкладинок
-
-  const coversList = document.querySelector('.cover-list');
-  const coversCount = coversList.children.length;
-
-  // Задаємо тривалість анімації на основі кількості обкладинок
-  // Приклад: 15 секунд для 3 обкладинок, ви можете налаштувати за потребою
-  const animationDuration = 15 + (coversCount - 3) * 5;
-  coversList.style.animationDuration = `${animationDuration}s`;
 });
