@@ -95,6 +95,7 @@ img {
   margin-bottom: 30px;
   padding: 0;
   justify-content: flex-end;
+  align-items: flex-end;
   list-style: none;
 }
 
