@@ -57,7 +57,12 @@ function addDesktopItems() {
     container.insertBefore(newUl, existingLists[0]);
   }
 }
-
+function removeDesktopItems() {
+  const desktopList = document.querySelector('.cover-list.desktop');
+  if (desktopList) {
+    desktopList.remove();
+  }
+}
 function handleResize() {
   if (window.innerWidth >= 1440) {
     addDesktopItems();
