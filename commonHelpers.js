@@ -4,5 +4,5 @@
 
           <img src="./img/Rectangle-1-1x.jpg" alt="Banking" width="282" class="cover-img" />
         </picture>
-      `,t.appendChild(n);const r=i.querySelectorAll(".cover-list");i.insertBefore(t,r[0])}}function m(){const i=document.querySelector(".cover-list.desktop");i&&i.remove()}function d(){window.innerWidth>=1440?p():m()}window.addEventListener("load",d);window.addEventListener("resize",d);
+      `,t.appendChild(n);const r=i.querySelectorAll(".cover-list");i.insertBefore(t,r[0])}}function d(){window.innerWidth>=1440?p():removeDesktopItems()}window.addEventListener("load",d);window.addEventListener("resize",d);
 //# sourceMappingURL=commonHelpers.js.map
