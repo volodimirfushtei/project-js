@@ -37,8 +37,7 @@ body {
   background-size: cover;
   margin: 0 auto;
   cursor: pointer;
-  overflow: hidden;
-  background-image: url('../img/el_vectors-1x.png');
+
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -51,17 +50,18 @@ body {
 }
 
 .cover-container {
-  width: 100%;
+  max-width: 375px;
   min-height: 508px;
   padding: 0;
   position: relative;
   margin: 0 auto;
+  overflow: hidden;
+  background-image: url('../img/el_vectors-1x.png');
 }
 .covers-wrapp {
   position: absolute;
   right: -800px;
   left: 0;
-  overflow: hidden;
 }
 .cover-list {
   display: flex;
@@ -96,7 +96,7 @@ img.cover-img {
   /* Додати інші стилі для ефекту, коли елемент візуалізовано */
 }
 .cover-section.scrolling .cover-list li {
-  animation: marqueeLine 5s linear infinite;
+  animation: marqueeLine 10s linear infinite;
   animation-duration: 10s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
@@ -113,8 +113,9 @@ img.cover-img {
 /* Tablet */
 @media screen and (min-width: 768px) {
   .cover-container {
-    width: 768px;
+    max-width: 768px;
     height: auto;
+    overflow: hidden;
   }
 
   .cover-list {
@@ -134,9 +135,10 @@ img.cover-img {
 }
 
 /* Desktop */
-@media screen and (min-width: 1158px) {
+@media screen and (min-width: 1440px) {
   .cover-container {
-    width: 1429px;
+    max-width: 1440px;
     min-height: 968px;
+    overflow: hidden;
   }
 }
