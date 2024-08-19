@@ -125,6 +125,7 @@ img.cover-img {
     width: 544px;
     min-height: 314px;
     object-fit: cover;
+    display: block;
   }
 }
 

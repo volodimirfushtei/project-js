@@ -47,9 +47,9 @@ function addDesktopItems() {
     const newLi = document.createElement('li');
     newLi.innerHTML = `
         <picture class="cover-picture">
-          <source srcset="./img/Rectangle-1-1x.jpg 1x, ./img/Rectangle-1-2x.jpg 2x" media="(min-width: 1440px)" />
+          <source srcset="./img/firstscreen-1-1x.jpg 1x, ./img/firstscreen-1-2x.jpg 2x" media="(min-width: 1440px)" />
 
-          <img src="./img/Rectangle-1-1x.jpg" alt="Banking" width="282" class="cover-img" />
+          <img src="./img/firstscreen-1-1x.jpg" alt="Banking" width="282" class="cover-img" />
         </picture>
       `;
     newUl.appendChild(newLi);
