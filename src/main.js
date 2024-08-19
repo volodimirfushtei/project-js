@@ -36,39 +36,3 @@ const debouncedCheckScroll = debounce(checkScroll, 100);
 window.addEventListener('scroll', debouncedCheckScroll);
 
 checkScroll();
-
-function addDesktopItems() {
-  const container = document.querySelector('.cover-section .cover-container');
-
-  if (!document.querySelector('.cover-list.desktop')) {
-    const newUl = document.createElement('ul');
-    newUl.classList.add('cover-list', 'desktop');
-
-    const newLi = document.createElement('li');
-    newLi.innerHTML = `
-        <picture class="cover-picture">
-          <source srcset="/img/firstscreen-1-1x.jpg 1x, /img/firstscreen-1-2x.jpg 2x" media="(min-width: 1440px)" />
-
-          <img src="/img/firstscreen-1-1x.jpg" alt="Banking" width="282" class="cover-img" />
-        </picture>
-      `;
-    newUl.appendChild(newLi);
-    const existingLists = container.querySelectorAll('.cover-list');
-    container.insertBefore(newUl, existingLists[0]);
-  }
-}
-function removeDesktopItems() {
-  const desktopList = document.querySelector('.cover-list.desktop');
-  if (desktopList) {
-    desktopList.remove();
-  }
-}
-function handleResize() {
-  if (window.innerWidth >= 1440) {
-    addDesktopItems();
-  } else {
-    removeDesktopItems();
-  }
-}
-window.addEventListener('load', handleResize);
-window.addEventListener('resize', handleResize);

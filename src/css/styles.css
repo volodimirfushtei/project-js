@@ -4,8 +4,6 @@
   | default @import url()
   |============================
 */
-@import url('./reset.css');
-/* styles.css */
 
 body {
   background: #1c1d20;
@@ -104,6 +102,9 @@ img.cover-img {
     transform: translateX(-150%);
   }
 }
+.cover-list-none {
+  display: none;
+}
 /* Tablet */
 @media screen and (min-width: 768px) {
   .cover-container {
@@ -128,12 +129,17 @@ img.cover-img {
     display: block;
   }
 }
-
+.cover-list-none {
+  display: none;
+}
 /* Desktop */
 @media screen and (min-width: 1440px) {
   .cover-container {
     max-width: 1440px;
     min-height: 960px;
     overflow: hidden;
+  }
+  .cover-list-none {
+    display: flex;
   }
 }
