@@ -50,7 +50,7 @@ function addDesktopItems() {
           <source srcset="./img/Rectangle-1-1x.jpg 1x, ./img/Rectangle-1-2x.jpg 2x" media="(min-width: 1440px)" />
           <source srcset="./img/Rectangle-1-1x.jpg 1x, ./img/Rectangle-1-2x.jpg 2x" media="(min-width: 768px)" />
           <source srcset="./img/Rectangle-1-1x.jpg 1x, ./img/Rectangle-1-2x.jpg 2x" media="(max-width: 767px)" />
-          <img src="./img/Rectangle-1-1x.jpg" alt="Cover 1" width="282" class="cover-img" />
+          <img src="./img/Rectangle-1-1x.jpg" alt="Banking" width="282" class="cover-img" />
         </picture>
       `;
     newUl.appendChild(newLi);
