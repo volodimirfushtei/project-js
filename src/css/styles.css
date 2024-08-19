@@ -37,7 +37,7 @@ body {
   background-size: cover;
   margin: 0 auto;
   cursor: pointer;
-
+  background-image: url('../img/el_vectors-1x.png');
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -56,7 +56,6 @@ body {
   position: relative;
   margin: 0 auto;
   overflow: hidden;
-  background-image: url('../img/el_vectors-1x.png');
 }
 .covers-wrapp {
   position: absolute;
@@ -91,15 +90,10 @@ img.cover-img {
 }
 
 .cover-section.scrolling {
-  /* Зміна кольору фону, коли елемент видно */
-  transform: scale(1.05); /* Легке збільшення елемента для виділення */
-  /* Додати інші стилі для ефекту, коли елемент візуалізовано */
+  transform: scale(1.05);
 }
 .cover-section.scrolling .cover-list li {
   animation: marqueeLine 10s linear infinite;
-  animation-duration: 10s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
 }
 
 @keyframes marqueeLine {
@@ -114,7 +108,7 @@ img.cover-img {
 @media screen and (min-width: 768px) {
   .cover-container {
     max-width: 768px;
-    height: auto;
+    min-height: 960px;
     overflow: hidden;
   }
 
@@ -138,7 +132,7 @@ img.cover-img {
 @media screen and (min-width: 1440px) {
   .cover-container {
     max-width: 1440px;
-    min-height: 968px;
+    min-height: 960px;
     overflow: hidden;
   }
 }

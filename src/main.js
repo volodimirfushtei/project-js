@@ -12,8 +12,14 @@ function isInViewport(element) {
 
 function checkScroll() {
   if (isInViewport(viewport)) {
+    if (!viewport.classList.contains('scrolling')) {
+      console.log('Section is in viewport".');
+    }
     viewport.classList.add('scrolling');
   } else {
+    if (viewport.classList.contains('scrolling')) {
+      console.log('Section is out of viewport".');
+    }
     viewport.classList.remove('scrolling');
   }
 }
@@ -61,7 +67,7 @@ function removeDesktopItems() {
 }
 
 function handleResize() {
-  if (window.innerWidth >= 1158) {
+  if (window.innerWidth >= 1440) {
     addDesktopItems();
   } else {
     removeDesktopItems();
