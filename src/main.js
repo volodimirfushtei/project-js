@@ -36,3 +36,28 @@ const debouncedCheckScroll = debounce(checkScroll, 100);
 window.addEventListener('scroll', debouncedCheckScroll);
 
 checkScroll();
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Select all the <ul> elements with the class 'cover-list'
+  const coverLists = document.querySelectorAll('.cover-list li');
+
+  // Define the delay between each <ul>
+  const listDelay = 1000; // Adjust as needed
+
+  // Iterate over each <ul> and apply animation
+  coverLists.forEach((list, listIndex) => {
+    // Apply a delay to the <ul> to make sure lists appear sequentially
+    list.style.transitionDelay = `${listIndex * listDelay}ms`;
+    list.classList.add('show');
+
+    // Select all <li> elements within the current <ul>
+    const listItems = list.querySelectorAll('li');
+
+    listItems.forEach((item, itemIndex) => {
+      // Calculate delay for each <li> to appear sequentially within the <ul>
+      const itemDelay = 500; // Adjust as needed
+      item.style.transitionDelay = `${itemIndex * itemDelay}ms`;
+      item.classList.add('show');
+    });
+  });
+});
