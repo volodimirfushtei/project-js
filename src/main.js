@@ -1,24 +1,35 @@
 const viewport = document.querySelector('.cover-section');
 
-function isInViewport(element) {
+function isCenterInViewport(element) {
   const rect = element.getBoundingClientRect();
+  const viewportHeight = window.innerHeight;
+  const viewportWidth = window.innerWidth;
+
+  // Обчислюємо центр елемента
+  const elementCenterX = rect.left + rect.width / 2;
+  const elementCenterY = rect.top + rect.height / 2;
+
+  // Перевіряємо, чи центр елемента в межах вюпорта
   return (
-    rect.top < window.innerHeight &&
-    rect.left < window.innerWidth &&
-    rect.bottom > 0 &&
-    rect.right > 0
+    elementCenterX >= 0 &&
+    elementCenterX <= viewportWidth &&
+    elementCenterY >= 0 &&
+    elementCenterY <= viewportHeight
   );
 }
 
 function checkScroll() {
-  if (isInViewport(viewport)) {
+  const isInViewport = isCenterInViewport(viewport);
+
+  if (!isInViewport) {
     if (!viewport.classList.contains('scrolling')) {
-      console.log('Section is in viewport".');
+      console.log('Section is in viewport.');
+      applyTransition('.cover-list li', 500, 300, 'show');
     }
     viewport.classList.add('scrolling');
   } else {
     if (viewport.classList.contains('scrolling')) {
-      console.log('Section is out of viewport".');
+      console.log('Section is out of viewport.');
     }
     viewport.classList.remove('scrolling');
   }
@@ -37,27 +48,23 @@ window.addEventListener('scroll', debouncedCheckScroll);
 
 checkScroll();
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Select all the <ul> elements with the class 'cover-list'
-  const coverLists = document.querySelectorAll('.cover-list li');
+// Animation function
+function applyTransition(coverSelector, listDelay, itemDelay, showClass) {
+  const coverLists = document.querySelectorAll(coverSelector);
 
-  // Define the delay between each <ul>
-  const listDelay = 1000; // Adjust as needed
-
-  // Iterate over each <ul> and apply animation
   coverLists.forEach((list, listIndex) => {
-    // Apply a delay to the <ul> to make sure lists appear sequentially
     list.style.transitionDelay = `${listIndex * listDelay}ms`;
-    list.classList.add('show');
+    list.classList.add(showClass);
 
-    // Select all <li> elements within the current <ul>
     const listItems = list.querySelectorAll('li');
 
     listItems.forEach((item, itemIndex) => {
-      // Calculate delay for each <li> to appear sequentially within the <ul>
-      const itemDelay = 500; // Adjust as needed
       item.style.transitionDelay = `${itemIndex * itemDelay}ms`;
-      item.classList.add('show');
+      item.classList.add(showClass);
     });
   });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  applyTransition('.cover-list li', 500, 300, 'show');
 });
