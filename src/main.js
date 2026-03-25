@@ -5,11 +5,9 @@ function isCenterInViewport(element) {
   const viewportHeight = window.innerHeight;
   const viewportWidth = window.innerWidth;
 
-  // Обчислюємо центр елемента
   const elementCenterX = rect.left + rect.width / 2;
   const elementCenterY = rect.top + rect.height / 2;
 
-  // Перевіряємо, чи центр елемента в межах вюпорта
   return (
     elementCenterX >= 0 &&
     elementCenterX <= viewportWidth &&
@@ -21,17 +19,22 @@ function isCenterInViewport(element) {
 function checkScroll() {
   const isInViewport = isCenterInViewport(viewport);
 
-  if (!isInViewport) {
+  if (isInViewport) {
     if (!viewport.classList.contains('scrolling')) {
-      console.log('Section is in viewport.');
-      applyTransition('.cover-list li', 500, 300, 'show');
+      console.log('Section is in viewport');
+
+      applyTransition('.cover-list', 200, 100, 'show');
+      viewport.classList.add('scrolling');
     }
-    viewport.classList.add('scrolling');
   } else {
     if (viewport.classList.contains('scrolling')) {
-      console.log('Section is out of viewport.');
+      viewport.classList.remove('scrolling');
+      const listItems = document.querySelectorAll('.cover-list li');
+      listItems.forEach(item => {
+        item.classList.remove('show');
+        item.style.transitionDelay = '0ms';
+      });
     }
-    viewport.classList.remove('scrolling');
   }
 }
 
@@ -48,23 +51,17 @@ window.addEventListener('scroll', debouncedCheckScroll);
 
 checkScroll();
 
-// Animation function
+// ✅ FIXED animation
 function applyTransition(coverSelector, listDelay, itemDelay, showClass) {
   const coverLists = document.querySelectorAll(coverSelector);
 
   coverLists.forEach((list, listIndex) => {
-    list.style.transitionDelay = `${listIndex * listDelay}ms`;
-    list.classList.add(showClass);
-
     const listItems = list.querySelectorAll('li');
 
     listItems.forEach((item, itemIndex) => {
-      item.style.transitionDelay = `${itemIndex * itemDelay}ms`;
+      // Add delays correctly across rows and items
+      item.style.transitionDelay = `${(listIndex * listDelay) + (itemIndex * itemDelay)}ms`;
       item.classList.add(showClass);
     });
   });
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  applyTransition('.cover-list li', 500, 300, 'show');
-});
